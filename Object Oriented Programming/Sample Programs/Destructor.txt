@@ -1,0 +1,26 @@
+class MyClass:
+   def __del__(self):
+      class_name = self.__class__.__name__
+      module_name = MyClass.__module__
+      print ("Garbage Collector cleared all instances of Class {0} in {1} Module".format(class_name,module_name))
+
+pt1 = MyClass()
+pt2 = pt1 # pt2 references pt1
+pt3 = pt2 # pt3 references pt2
+del pt1
+print('Deleted pt1')
+del pt2
+print('Deleted pt2')
+del pt3
+print('Deleted pt3')
+
+
+obj1 = MyClass()
+obj2 = obj1
+obj3 = obj1
+
+del obj1
+print('Assigned different value to obj 2')
+obj2 = 1
+print('Assigned different value to obj 3')
+obj3 = 3

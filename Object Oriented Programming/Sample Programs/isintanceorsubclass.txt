@@ -1,0 +1,93 @@
+class Vehicle(object):
+   __no_of_vehicles = 0
+   def __init__(self, color, model_year, make):
+      print('Vehicle')
+      self.color = color
+      self.model_year = model_year
+      self.make = make
+      Vehicle.__no_of_vehicles+=1
+   def start(self):
+      pass
+   def accelerate(self):
+      pass
+   def apply_break(self):
+      pass
+   def stop(self):
+      pass
+   def horn(self):
+      pass
+
+class FuelVehicle(Vehicle):
+   __no_of_FuelVehicles = 0
+   def __init__(self, color, model_year, make):
+      print('Fuel Vehicle')
+      super().__init__(color, model_year, make)
+      self.cc = None
+      self.fuel_type = None
+      FuelVehicle.__no_of_FuelVehicles+=1
+   def pull_choke(self):
+      pass
+   def push_choke(self):
+      pass
+   def display_fuel_remaining(self):
+      pass
+   def switch_to_reserve(self):
+      pass
+   def common(self):
+       print('Fuel Common')
+
+class ElectricVehicle(Vehicle):
+   __no_of_ElectricVehicle = 0
+   def __init__(self, color, model_year, make):
+      print('Electric Vehicle')
+      super().__init__(color, model_year, make)
+      self.distance_per_charge = None
+      self.charging_time = None
+      ElectricVehicle.__no_of_ElectricVehicle+=1
+   def display_battery_level(self):
+      pass
+   def recharge_battery(self):
+      pass
+   def common(self):
+       print('Electric Common')
+
+class HybridVehicle(ElectricVehicle, FuelVehicle):
+   ___no_of_HybridVehicles = 0
+   def __init__(self, color, model_year, make):
+      print('Hybrid Vehicle')
+      super().__init__(color, model_year, make)
+      print(self.__dict__)
+      #FuelVehicle.__init__(self,color, model_year, make)
+      #ElectricVehicle.__init__(self,color, model_year, make)
+      HybridVehicle.___no_of_HybridVehicles+=1
+
+class AnotherClass:
+    pass
+
+if __name__ == '__main__':
+   camry = HybridVehicle('Black',2020,'Toyota')
+   alto800 = FuelVehicle('Silver',2010,'Maruti')
+   unknown = Vehicle('red','','Toyoto')
+   print('No of Vehicles: ',Vehicle._Vehicle__no_of_vehicles)
+
+   print(isinstance(camry,HybridVehicle))
+   print(isinstance(camry, FuelVehicle))
+   print(isinstance(camry, ElectricVehicle))
+   print(isinstance(camry, Vehicle))
+
+   print(isinstance(alto800, HybridVehicle))
+   print(isinstance(alto800, FuelVehicle))
+   print(isinstance(alto800, ElectricVehicle))
+   print(isinstance(alto800, Vehicle))
+
+   print(issubclass(Vehicle, ElectricVehicle))
+   print(issubclass(Vehicle, FuelVehicle))
+   print(issubclass(ElectricVehicle, Vehicle))
+   print(issubclass(Vehicle, HybridVehicle))
+   print(issubclass(HybridVehicle, ElectricVehicle))
+   print(issubclass(HybridVehicle, FuelVehicle))
+   print(issubclass(HybridVehicle, Vehicle))
+
+   print(issubclass(AnotherClass, Vehicle))
+   print(issubclass(Vehicle, AnotherClass))
+

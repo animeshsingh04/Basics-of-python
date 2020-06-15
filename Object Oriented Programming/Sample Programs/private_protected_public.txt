@@ -1,0 +1,20 @@
+class MyClass:
+   __pvtClassAttribute = 'Im a Private Class Attribute, You cant access me directly outside of my class scope'
+   _protClassAttribute = 'Im a Protected Class Attribute, As per Python coding conventions, Please use me only inside my class and the classes that derive me'
+   pubClassAttribute = 'Im a Public Class Attribute, Access and use me anywhere you want to'
+   def __init__(self):
+      self.__pvtInstanceAttribute = 'Im a Private Instance Attribute, You cant access me directly outside of my class scope'
+      self._protInstanceAttribute = 'Im a Protected Instance Attribute, As per Python coding conventions, Please use me only inside my class and the classes that derive me'
+      self.pubInstanceAttribute = 'Im a Public Instance Attribute, Access and use me anywhere you want to'
+
+if __name__ == '__main__':
+   #print(MyClass.__pvtClassAttribute)
+   print(MyClass._protClassAttribute)
+   print(MyClass.pubClassAttribute)
+   obj = MyClass()
+   #print(obj.__pvtInstanceAttribute)
+   print(obj._protInstanceAttribute)
+   print(obj.pubInstanceAttribute)
+
+   print(MyClass._MyClass__pvtClassAttribute + ' -> As per Python conventions, I shouldnt be accesses this way ')
+   print(obj._MyClass__pvtInstanceAttribute + ' -> As per Python conventions, I shouldnt be accesses this way ')

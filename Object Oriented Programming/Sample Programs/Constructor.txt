@@ -1,0 +1,43 @@
+1)
+class MyClass:
+   intancesCount = 0
+   def __init__(self):
+      self.__class__.intancesCount+=1
+      self.MyVariable = None
+      class_name = self.__class__.__name__
+      module_name = MyClass.__module__
+      print ("Created an Instance of Class {0} in {1} Module, Total Instance Count is {2}".format(class_name,module_name,self.__class__.intancesCount))
+
+obj1 = MyClass()
+obj2 = obj1 # pt2 references pt1
+obj3 = obj2 # pt3 references pt2
+# obj3 = MyClass()
+obj3.MyVariable = 1
+obj3.MyAnotherVariable = 2
+print(obj1.MyVariable)
+print(obj1.MyAnotherVariable)
+
+
+2)
+import math
+
+class Rectangle:
+   def printArea(self, w, h, unit='m'):
+      self.area = w * h
+      print('Area of Rectangle is {0} {1}\u00b2'.format(self.area,unit))
+
+class Circle:
+   def __init__(self, radius, unit='m'):
+      self.area = round(math.pi * (radius**2),2)
+      print('Circle created with area {0} {1}\u00b2'.format(self.area,unit))
+
+
+myRectangle = Rectangle()
+#print(myRectangle.area)
+myRectangle.printArea(2,2)
+#print(myRectangle.area)
+
+#SampleCircle = Circle()
+BigCircle = Circle(5)
+SmallCircle = Circle(10,'mm')
+MediumCircle = Circle(1,unit='cm')

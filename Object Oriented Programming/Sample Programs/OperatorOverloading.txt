@@ -1,0 +1,59 @@
+class ComplexNumber:
+   def __init__(self, a, b):
+      self.a = a
+      self.b = b
+   def __add__(self, other):
+      return ComplexNumber(self.a + other.a, self.b + other.b)
+   def __str__(self):
+       return "{x}+i{y}".format(x=self.a, y=self.b)
+   # Removed in Python 3, Still works in Python 2
+   def __cmp__(self, other):
+      result = self.compare_complex_numbers(other)
+      if result is None:
+         print('Both are identical')
+      elif result:
+         print('Complex Number is Greater when compared with Other')
+      elif not result:
+         print('Complex Number is Lesser when compared with Other')
+      else:
+         print('Unable to compare the Complex Numbers')
+   # Rich Comparison Methods introduced in Python 3
+   def __eq__(self, other):
+      return self.compare_complex_numbers(other) is None
+   def __ne__(self, other):
+      return self.compare_complex_numbers(other) is not None
+   def __lt__(self, other):
+      return self.compare_complex_numbers(other) is False
+   def __le__(self, other):
+      return self.compare_complex_numbers(other) is False or  self.compare_complex_numbers(other) is None
+   def __gt__(self, other):
+      return self.compare_complex_numbers(other) is True
+   def __ge__(self, other):
+      return self.compare_complex_numbers(other) is True or self.compare_complex_numbers(other) is None
+
+   def compare_complex_numbers(self, other):
+      if self.a > other.a:
+         return True
+      elif self.a < other.a:
+         return False
+      elif self.a == other.a:
+         if self.b > other.b:
+            return True
+         elif self.b < other.b:
+            return False
+         else:
+            return None
+
+
+cn1 = ComplexNumber(3,3)
+cn2 = ComplexNumber(7,2)
+# Operator Overloading
+cn3 = cn1 + cn2
+print('Result of Complex Addition: ',cn3)
+# Object Comparison
+print('Equal :',cn1 == cn2)
+print('Not Equal :',cn1 != cn2)
+print('Greater :',cn1 > cn2)
+print('Greater or Equal :',cn1 >= cn2)
+print('Lesser :',cn1 < cn2)
+print('Lesser or Equal :',cn1 <= cn2)

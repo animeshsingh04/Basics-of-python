@@ -1,0 +1,16 @@
+class BaseClass(object):
+    def print_class(self,withMembers=True):
+        if withMembers:
+            print(self.__class__,self.__class__.__dict__)
+
+class DerivedClass(BaseClass):
+    # Method Overriding
+    def print_class(self):
+        print(self.__class__)
+
+if __name__ == '__main__':
+    baseObj = BaseClass()
+    derivedObj = DerivedClass()
+
+    derivedObj.print_class()
+    baseObj.print_class()

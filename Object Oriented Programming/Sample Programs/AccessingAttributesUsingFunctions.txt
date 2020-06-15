@@ -1,0 +1,42 @@
+import math
+
+class Circle:
+   classAttribute = 'Im a Class Attribute'
+   def __init__(self, radius, unit='m'):
+      self.radius = radius
+      self.unit = unit
+      self.area = round(math.pi * (radius**2),2)
+      print('Circle created with area {0} {1}\u00b2'.format(self.area,unit))
+
+   def findArea(self):
+      print('Circle Area {0} {1}\u00b2'.format(round(math.pi * (self.radius**2),2), self.unit))
+
+   def findCircumference(self):
+      print('Circle Circumference is {0} {1}'.format(self.circumference, self.unit))
+
+obj = Circle(2,'cm')
+
+a = getattr(obj,'area')
+print('Area ',a)
+# b = getattr(c,'circumference')
+
+print('Has Circumference? ',hasattr(obj,'circumference'))
+obj.circumference = 2 * math.pi * obj.radius
+print('Has Circumference? ',hasattr(obj,'circumference'))
+obj.findCircumference()
+
+setattr(obj,'radius',5)
+setattr(obj,'unit','mm')
+obj.findArea()
+
+delattr(obj, 'circumference')
+# obj.findCircumference()
+
+# How to access Class attributes
+print('Has Class Attribute? ',hasattr(Circle,'classAttribute'))
+print(getattr(Circle,'classAttribute'))
+setattr(Circle,'classAttribute','Im a Class Attribute Still..')
+print(getattr(Circle,'classAttribute'))
+delattr(Circle, 'classAttribute')
+print('Has Class Attribute? ',hasattr(Circle,'classAttribute'))
+

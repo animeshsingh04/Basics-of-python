@@ -1,0 +1,99 @@
+class Vehicle(object):
+   __no_of_vehicles = 0
+   def __init__(self, color, model_year, make):
+      print('Vehicle')
+      self.color = color
+      self.model_year = model_year
+      self.make = make
+      Vehicle.__no_of_vehicles+=1
+   def start(self):
+      pass
+   def accelerate(self):
+      pass
+   def apply_break(self):
+      pass
+   def stop(self):
+      pass
+   def horn(self):
+      pass
+
+class FuelVehicle(Vehicle):
+   __no_of_FuelVehicles = 0
+   def __init__(self, color, model_year, make, cc, fuel_type):
+      print('Fuel Vehicle')
+      super().__init__(color, model_year, make)
+      self.cc = cc
+      self.fuel_type = fuel_type
+      FuelVehicle.__no_of_FuelVehicles+=1
+   def pull_choke(self):
+      pass
+   def push_choke(self):
+      pass
+   def display_fuel_remaining(self):
+      pass
+   def switch_to_reserve(self):
+      pass
+   def common(self):
+       print('Fuel Common')
+
+class ElectricVehicle(Vehicle):
+   __no_of_ElectricVehicle = 0
+   def __init__(self, color, model_year, make, distance_per_charge, charging_time):
+      print('Electric Vehicle')
+      super().__init__(color, model_year, make)
+      self.distance_per_charge = distance_per_charge
+      self.charging_time = charging_time
+      ElectricVehicle.__no_of_ElectricVehicle+=1
+   def display_battery_level(self):
+      pass
+   def recharge_battery(self):
+      pass
+   def common(self):
+       print('Electric Common')
+
+class HybridVehicle(FuelVehicle, ElectricVehicle):
+   ___no_of_HybridVehicles = 0
+   def __init__(self, color, model_year, make, cc, fuel_type, distance_per_charge, charging_time):
+      print('Hybrid Vehicle')
+      #FuelVehicle.__init__(self, color, model_year, make, cc, fuel_type)
+      ElectricVehicle.__init__(self,color, model_year, make, distance_per_charge, charging_time)
+      HybridVehicle.___no_of_HybridVehicles+=1
+
+class Car(FuelVehicle):
+   __no_of_Cars = 0
+   no_of_wheels = 4
+   def __init__(self, color, model_year, make, cc, fuel_type, gears, max_passenger=5, auto_gear=False):
+      print('Car')
+      super().__init__(color, model_year, make, cc, fuel_type)
+      self.max_passenger = max_passenger
+      self.gears = gears
+      self.auto_gear = auto_gear
+      Car.__no_of_Cars+=1
+
+class ElectricCar(ElectricVehicle):
+   __no_of_ElectricCars = 0
+   no_of_wheels = 4
+   def __init__(self, color, model_year, make,  distance_per_charge, charging_time, gears, max_passenger=5, auto_gear=False):
+      print('Electric Car')
+      super().__init__(color, model_year, make, distance_per_charge, charging_time)
+      self.max_passenger = max_passenger
+      self.gears = gears
+      self.auto_gear = auto_gear
+      ElectricCar.__no_of_ElectricCars+=1
+
+class HybridCar(HybridVehicle):
+   __no_of_HybridCars = 0
+   no_of_wheels = 4
+   def __init__(self, color, model_year, make, cc, fuel_type, distance_per_charge, charging_time, gears, max_passenger=5, auto_gear=False):
+      print('Hybrid Car')
+      super().__init__(color, model_year, make, cc, fuel_type, distance_per_charge, charging_time)
+      self.max_passenger = max_passenger
+      self.gears = gears
+      self.auto_gear = auto_gear
+      HybridCar.__no_of_HybridCars+=1
+
+if __name__ == '__main__':
+   alto800 = Car('White',2018,'Maruti',800,'Petrol',4,4)
+   tesla = ElectricCar('Silver',2017,'Tesla',300,4,6,2,True)
+   camry = HybridCar('Black',2020,'Toyota',1200,'Diesel',500,6,5,auto_gear=True)
+   print('No of Vehicles: ',Vehicle._Vehicle__no_of_vehicles)

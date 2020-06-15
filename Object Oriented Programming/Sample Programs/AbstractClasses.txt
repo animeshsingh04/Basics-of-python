@@ -1,0 +1,32 @@
+from abc import ABC,abstractmethod
+
+class AbstractVehicle(ABC):
+
+    @abstractmethod
+    def start(self):
+        pass
+    @abstractmethod
+    def stop(self):
+        pass
+    @abstractmethod
+    def horn(self):
+        pass
+    @abstractmethod
+    def brake(self):
+        pass
+
+class Vehicle(AbstractVehicle):
+
+    def start(self):
+        pass
+    def stop(self):
+        pass
+    def horn(self):
+        pass
+    def brake(self):
+        pass
+
+if __name__ == '__main__':
+    v = Vehicle()
+
+

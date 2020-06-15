@@ -1,0 +1,17 @@
+class ComplexNumber:
+
+   def __init__(self, x, y):
+      self.a = x
+      self.b = y
+
+   def __repr__(self):
+       return "Complex Number: {x}+i{y}".format(x=self.a, y=self.b)
+
+   # Remove this later and print
+   def __str__(self):
+       return "{x}+i{y}".format(x=self.a, y=self.b)
+
+cn1 = ComplexNumber(2,5)
+print(cn1)
+print([cn1])
+print(str(cn1))
